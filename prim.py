@@ -1,4 +1,4 @@
-from Lab_discret1.generate_graph import gnp_random_connected_graph
+from generate_graph import gnp_random_connected_graph
 from queue import PriorityQueue
 import timeit
 import math
