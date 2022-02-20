@@ -38,4 +38,4 @@ def prim(number, graphs):
     return tm
 
 if __name__ == '__main__':
-    print(main())
+    print(prim())
