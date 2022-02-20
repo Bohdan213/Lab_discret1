@@ -1,29 +1,44 @@
+"""
+Kruskal algorithm
+"""
+
 from generate_graph import gnp_random_connected_graph
 import timeit
 
 """
+The algorithm used in my implementation
 
-Крок 1. Упорядкувати множину ребер у порядку зростання ваг: e1, e2, e3, …, em.
+Step 1. Arrange the set of edges in ascending order of weights: e1, e2, e3,…, em.
 
-Крок 2. Утворити розбиття множини вершин на одноелементні підмножини: {{v1}, {v2}, …, {vn}}.
+Step 2. Divide the set of vertices into one-element subsets: {{v1}, {v2},…, {vn}}.
 
-Крок 3. Вибирати таке чергове ребро з упорядкованої послідовності ребер, що його кінці містяться в різних
-множинах розбиття (це забезпечить відсутність простих циклів). Якщо вибрано ребро ei = {v, w}, то
-множини розбиття, які містять вершини v та w, об’єднують в одну множину.
+Step 3. Select such an next edge from an ordered sequence of edges that its ends
+are contained in different. multiple partitions (this will ensure the absence of
+simple cycles). If the edge ei = {v, w} is selected, then
+split sets containing vertices v and w are combined into one set.
 
-Крок 4. Якщо вже вибрано (n–1) ребро (у такому разі всі підмножини розбиття об’єднаються в одну), то
-зупинитись, бо вибрані ребра утворюють мінімальний каркас. Інакше перейти до кроку 3.
+Step 4. If (n – 1) edge is already selected (in this case all subsets of
+partition will be combined into one), then
+stop because the selected ribs form a minimal frame. Otherwise, go to step 3.
 
+- from a lecture by Yurii Shcherbyna.
 """
 
 
-def kruskal(graph, vert, vertices):
-    #sorting the graph
+def kruskal(graph: list):
+    """
+    Kruskal algorithm.
+    returns minimum spanning tree cost.
+    """
+    vert_set = set()
+    for elem in graph:
+        vert_set.add(elem[0])
+        vert_set.add(elem[1])
+    vertices = list(vert_set)
     graph = sorted(graph, key=lambda item: item[2])
     vertices = [set([elem]) for elem in sorted(vertices)]
-    biggest_subset = 0
     sum = 0
-    while biggest_subset <= vert-1:
+    while 1:
         break_1 = False
         for elem in graph:
             break_1 = False
@@ -36,24 +51,18 @@ def kruskal(graph, vert, vertices):
                             vertices.pop(min(n2,n1))
                             vertices.pop(max(n2,n1)-1)
                             vertices.append(vert1.union(vert2))
-                            biggest_subset+=1
                             sum += elem[2]
                             break_1 = True
                             break
 
 
 def main():
-    graph = []
+    """
+    Main function
+    """
     generated = gnp_random_connected_graph(500, 0.5)
-    vert = set()
-    for elem in generated:
-        vert.add(elem[0])
-        vert.add(elem[1])
-        graph.append([elem[0], elem[1], elem[2]])
-    vert_len = len(vert)
-    print(f'Number of vertices = {vert_len}')
     start = timeit.default_timer()
-    print(kruskal(graph, vert_len, list(vert)))
+    print(kruskal(generated))
     stop = timeit.default_timer()
     print(f'Algorithm time: {stop - start}')
 
