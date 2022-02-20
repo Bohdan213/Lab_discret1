@@ -3,10 +3,10 @@ from queue import PriorityQueue
 import timeit
 import math
 
-def main():
-    a = input()
-    number, posibility = int(a.split()[0]), float(a.split()[1])
-    graphs = gnp_random_connected_graph(number, posibility)
+def prim(number, graphs):
+    # a = input()
+    # number, posibility = int(a.split()[0]), float(a.split()[1])
+    # graphs = gnp_random_connected_graph(number, posibility)
     Graph = []
     for i in range(number):
         Graph.append([])
@@ -24,19 +24,18 @@ def main():
         temp = Q.get()
         edge_len = temp[0]
         edge = temp[1]
-        if U[edge] == True:
+        if U[edge]:
             continue
-        else:
-            S += edge_len
-            U[edge] = True
-            for i in range(len(Graph[edge])):
-                cost = Graph[edge][i][1]
-                v = Graph[edge][i][0]
-                if U[v] == False:
-                    Q.put((cost, v))
+        S += edge_len
+        U[edge] = True
+        for i in range(len(Graph[edge])):
+            cost = Graph[edge][i][1]
+            v = Graph[edge][i][0]
+            if U[v]:
+                Q.put((cost, v))
     stop = timeit.default_timer()
     tm = stop - start
-    return S
+    return tm
 
 if __name__ == '__main__':
     print(main())

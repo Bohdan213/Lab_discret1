@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from networkx.algorithms import tree
 from itertools import combinations, groupby
 
-def gnp_random_connected_graph(num_of_nodes: int,
-                               completeness: int,
+def gnp_random_connected_graph(num_of_nodes,
+                               completeness,
                                draw: bool = False):
     """
     Generates a random undirected graph, similarly to an Erdős-Rényi
