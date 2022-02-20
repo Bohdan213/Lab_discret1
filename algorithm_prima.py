@@ -3,10 +3,10 @@ from queue import PriorityQueue
 import timeit
 import math
 
-def prim(number, graphs):
-    # a = input()
-    # number, posibility = int(a.split()[0]), float(a.split()[1])
-    # graphs = gnp_random_connected_graph(number, posibility)
+def prim():
+    a = input()
+    number, posibility = int(a.split()[0]), float(a.split()[1])
+    graphs = gnp_random_connected_graph(number, posibility)
     Graph = []
     for i in range(number):
         Graph.append([])
@@ -35,7 +35,8 @@ def prim(number, graphs):
                 Q.put((cost, v))
     stop = timeit.default_timer()
     tm = stop - start
-    return tm
+    print(graphs)
+    return tm, S
 
 if __name__ == '__main__':
     print(prim())
