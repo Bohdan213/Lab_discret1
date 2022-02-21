@@ -7,6 +7,7 @@ def draw_plots():
     style.use('seaborn-dark-palette')
 
     data = pd.read_csv('results.csv')
+    # data = pd.read_csv('second_results.csv')
     
     plt.figure(1)
 
@@ -18,6 +19,7 @@ def draw_plots():
     plt.xlabel('Number of vertices')
     plt.ylabel('Time')
     plt.xticks([0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000])
+    # plt.xticks([10, 910, 1810, 2710, 3910])
     max_1 = max(max(data.kruskal_1), max(data.prim_1))
     plt.yticks([0, max_1/2, max_1])
     plt.legend()
@@ -32,6 +34,7 @@ def draw_plots():
     plt.xlabel('Number of vertices')
     plt.ylabel('Time')
     plt.xticks([0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000])
+    plt.xticks([10, 910, 1810, 2710, 3910])
     max_5 = max(max(data.kruskal_5), max(data.prim_5))
     plt.yticks([0, max_5/2, max_5])
     plt.legend()
@@ -45,13 +48,14 @@ def draw_plots():
     plt.xlabel('Number of vertices')
     plt.ylabel('Time')
     plt.xticks([0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000])
+    plt.xticks([10, 910, 1810, 2710, 3910])
     max_9 = max(max(data.kruskal_9), max(data.prim_9))
     plt.yticks([0, max_9/2, max_9])
     plt.legend()
 
-    plt.figure(1).savefig('images/density1.jpg')
-    plt.figure(2).savefig('images/density5.jpg')
-    plt.figure(3).savefig('images/density9.jpg')
+    plt.figure(1).savefig('images/density1a.jpg')
+    plt.figure(2).savefig('images/density5a.jpg')
+    plt.figure(3).savefig('images/density9a.jpg')
     # plt.show()
 
 if __name__ == '__main__':
