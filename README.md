@@ -73,6 +73,10 @@ Results were saved to a file called [results.csv](results.csv)
 ![Comparisons](images/density1.jpg)
 ![Comparisons](images/density5.jpg)
 ![Comparisons](images/density9.jpg)
+Bigger number of vertices
+![Comparisons](images/density1a.jpg)
+![Comparisons](images/density5a.jpg)
+![Comparisons](images/density9a.jpg)
 ### Results
 We can see some unpredictable results at the graphs with bigger density.
 ### Contributors
