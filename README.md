@@ -78,7 +78,7 @@ Bigger number of vertices
 ![Comparisons](images/density5a.jpg)
 ![Comparisons](images/density9a.jpg)
 ### Results
-We can see some unpredictable results at the graphs with bigger density.
+We can see some unpredictable results at first three graphs with bigger density. But other ones show .ore realistic results
 ### Contributors
 * Maksym Mykhasiuta
 * Bohdan Pelekh
