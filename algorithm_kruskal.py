@@ -24,18 +24,11 @@ stop because the selected ribs form a minimal frame. Otherwise, go to step 3.
 """
 
 
-def kruskal(graph: list):
+def kruskal(graph: list, vertices):
     """
     Kruskal algorithm.
     returns minimum spanning tree cost.
     """
-    vert_set = set()
-    for elem in graph:
-        vert_set.add(elem[0])
-        vert_set.add(elem[1])
-    vertices = list(vert_set)
-    graph = sorted(graph, key=lambda item: item[2])
-    vertices = [set([elem]) for elem in sorted(vertices)]
     sum = 0
     while 1:
         break_1 = False
@@ -55,13 +48,25 @@ def kruskal(graph: list):
                             break
 
 
+def kruskal_starter(graph):
+    vert_set = set()
+    for elem in graph:
+        vert_set.add(elem[0])
+        vert_set.add(elem[1])
+    vertices = list(vert_set)
+    graph = sorted(graph, key=lambda item: item[2])
+    vertices = [set([elem]) for elem in sorted(vertices)]
+    return graph, vertices
+
+
 def timer_kruskal(graph):
     """
     Timer for Kruskall's algorithm
     """
     import timeit
+    gra, vert = kruskal_starter(graph)
     start = timeit.default_timer()
-    kruskal(graph)
+    kruskal(gra, vert)
     stop = timeit.default_timer()
     return stop - start
 
